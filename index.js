@@ -32,6 +32,10 @@ myApp.get('/', function (req, res) {
     res.render('home');
 });
 
+myApp.get('/login', function (req, res) {
+    res.render('login');
+});
+
 //Posts route
 myApp.get('/posts', function (req, res) {
     res.render('posts');
