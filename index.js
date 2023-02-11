@@ -3,7 +3,7 @@ const express = require('express');
 const path = require('path');
 
 //Set up the inbuilt express validator for basic validation
-const {check, validationResult} = require('express-validator'); 
+const { check, validationResult } = require('express-validator');
 
 //Import mongoose library
 const mongoose = require('mongoose');
@@ -25,16 +25,16 @@ myApp.set('view engine', 'ejs');
 myApp.set('views', path.join(__dirname, 'views'));
 
 //Set up the body parser
-myApp.use(express.urlencoded({extended:false}));
+myApp.use(express.urlencoded({ extended: false }));
 
 //routes
-myApp.get('/', function (req, resp) {
-        resp.send('<h1>Welcome to my website ..</h1>'); 
+myApp.get('/', function (req, res) {
+    res.render('home');
 });
 
 //Posts route
 myApp.get('/posts', function (req, res) {
-        res.render('posts');
+    res.render('posts');
 });
 
 
