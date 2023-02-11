@@ -15,6 +15,15 @@
                     <input type="password" placeholder="Password" id="password" name="password">
                     <input type="submit" value="Login">
                 </form>
+                <p style="color: white;">
+                    <%
+                        if(typeof(error) != 'undefined'){
+                            %>
+                                <%= error %>
+                            <%
+                        }
+                    %>
+                </p>
             </div>
         </div>
     </main>
