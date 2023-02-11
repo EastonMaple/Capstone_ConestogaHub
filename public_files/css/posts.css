@@ -1,3 +1,7 @@
+html{
+    font-family: 'Open Sans', sans-serif;
+}
+
 .create-post, .filter-posts {
     background-color: orange;
     margin: 10px;

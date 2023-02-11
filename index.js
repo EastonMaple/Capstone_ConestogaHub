@@ -39,6 +39,16 @@ myApp.get('/register', function (req, res) {
     res.render('register');
 });
 
+//Opening the "Create a post"
+myApp.get('/post',function(req,res){
+    res.render('post');
+});
+
+//Creating a post (POST)
+myApp.post('/postprocess', function (req, res) {
+    
+});
+
 //Posts route
 myApp.get('/posts', function (req, res) {
     res.render('posts');

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Notice we had to import jquery from a google server for tinymce-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="/js/tinymce/tinymce.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/post.css">
+    <title>Create a new post</title>
+</head>
+<script>
+    $(document).ready(function () {
+        tinymce.init({
+            selector: 'textarea#messageBody'
+        });
+    });
+</script>
+
+<body>
+    <%- include('includes/header_guest') %>
+        <form id="postForm" action="/postprocess" method="POST" enctype="multipart/form-data">
+            <div class="title">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" value="">
+            </div>
+            <div class="tag">
+                <label for="tags">Tag:</label>
+                <select id="tags" name="tags">
+                    <option value="lease">Lease</option>
+                    <option value="travel">Travel</option>
+                    <option value="jobs">Jobs</option>
+                    <option value="meetups">Meetups</option>
+                  </select>            </div>
+            <div class="tinymce">
+                <textarea name="messageBody" id="messageBody"></textarea>
+            </div>
+            <div class="photo">
+                <label for="photo">Photo:</label>
+                <input type="file" id="photo" name="photo">
+            </div>
+            <div class="submission">
+                <input type="submit" value="Submit">
+            </div>
+            <!--For all errors such as no title and no body text-->
+            <p class="errors">
+                Please input a title and textbody!
+                <%
+                    if(typeof(error) != 'undefined'){
+                        %>
+                            <%= error %>
+                        <%
+                    }
+                %>
+            </p>
+        </form>
+    <%- include('includes/footer') %>
+</body>
+
+</html>
