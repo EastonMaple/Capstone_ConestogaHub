@@ -18,7 +18,7 @@ const mongoose = require('mongoose');
 var myApp = express();
 
 //Using public folder for static files
-myApp.use(express.static(__dirname + '/public'));
+myApp.use(express.static(__dirname + '/public_files'));
 
 //Defining view engine and views
 myApp.set('view engine', 'ejs');
@@ -27,9 +27,8 @@ myApp.set('views', path.join(__dirname, 'views'));
 //Set up the body parser
 myApp.use(express.urlencoded({extended:false}));
 
-//All routes
-myApp.get('/', 
-    function (req, resp) {
+//routes
+myApp.get('/', function (req, resp) {
         resp.send('<h1>Welcome to my website ..</h1>'); 
 });
 
