@@ -18,7 +18,7 @@ const mongoose = require('mongoose');
 var myApp = express();
 
 //Using public folder for static files
-myApp.use(express.static(__dirname + '/public_file'));
+myApp.use(express.static(__dirname + '/public_files'));
 
 //Defining view engine and views
 myApp.set('view engine', 'ejs');
