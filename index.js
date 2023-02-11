@@ -27,10 +27,15 @@ myApp.set('views', path.join(__dirname, 'views'));
 //Set up the body parser
 myApp.use(express.urlencoded({extended:false}));
 
-//routes
+//All routes
 myApp.get('/', 
     function (req, resp) {
         resp.send('<h1>Welcome to my website ..</h1>'); 
+});
+
+//Posts route
+myApp.get('/posts', function (req, res) {
+        res.render('posts');
 });
 
 
