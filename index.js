@@ -28,9 +28,8 @@ myApp.set('views', path.join(__dirname, 'views'));
 myApp.use(express.urlencoded({extended:false}));
 
 //routes
-myApp.get('/', 
-    function (req, resp) {
-        resp.send('<h1>Welcome to my website ..</h1>'); 
+myApp.get('/', function (req, res) {
+        res.render('home'); 
 });
 
 
