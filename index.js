@@ -32,6 +32,10 @@ myApp.get('/', function (req, resp) {
         resp.send('<h1>Welcome to my website ..</h1>'); 
 });
 
+myApp.get('/login', function (req, res) {
+    res.render('login');
+});
+
 //Posts route
 myApp.get('/posts', function (req, res) {
         res.render('posts');
