@@ -1,0 +1,80 @@
+.create-post, .filter-posts {
+    background-color: orange;
+    margin: 10px;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    
+}
+
+.filter-posts{
+    background-color: blue;
+
+}
+
+.filter-posts:active{
+    background-color: red;
+
+}
+
+.filter-tags{
+    padding: 15px 20px;    
+    margin: 10px;
+    background-color: #008CBA;
+    border: none;
+    color: white;
+}
+
+.tags{
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.create-filter-bar{
+    display: flex;
+}
+
+.post{
+    display: flex;
+    width: 75%;
+    margin: auto;
+    border: 2px solid black;
+    padding: 30px;
+    margin-top: 10px;
+}
+
+.title-and-body,.likes-and-comments{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.user-profile-picture-and-name{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.user-profile-picture{
+    background-color: green;
+    margin-right: 10px;
+    padding: 20px;
+    width: 75px;
+    height: 75px;
+}
+
+.username{
+    text-align: center;
+}
+
+.likes-and-comments{
+    height: 100px;
+    margin-top: 50px;
+    align-items: center;
+}
+
+.comments{
+    white-space: nowrap;
+}
