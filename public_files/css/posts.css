@@ -2,51 +2,84 @@ html{
     font-family: 'Open Sans', sans-serif;
 }
 
-.create-post, .filter-posts {
-    background-color: orange;
+.create-filter-bar{
+    display: flex;
+    margin-bottom: 10px;
+}
+.create-post, .filter-posts, .filter-tags {
     margin: 10px;
-    border: none;
-    color: white;
-    padding: 15px 32px;
+    border-radius: 8px;
+    padding: 5px;
     text-align: center;
+    width: 140px;
+    font-size: 16px;
+}
+.create-post, .filter-tags {
+    /* to vertical align text center */
+    display: flex;
+    align-items: center;
+}
+.create-post div, .filter-tags div {
+    margin: auto;
+}
+.create-post{
+    border: 3px solid orange;
+    background-color: white;
     text-decoration: none;
-    
+    color: orange;
+}
+.create-post:hover{
+    background-color: orange;
+    color: white;
+    transition: .5s;
+}
+.create-post:active{
+    background-color: white;
+    color: orange;
 }
 
 .filter-posts{
+    border: 3px solid blue;
+    color: blue;
+    background-color: white;
+}
+.filter-posts:hover{
     background-color: blue;
-
-}
-
-.filter-posts:active{
-    background-color: red;
-
-}
-
-.filter-tags{
-    padding: 15px 20px;    
-    margin: 10px;
-    background-color: #008CBA;
-    border: none;
     color: white;
+    transition: .5s;
+    cursor: pointer;
+}
+.filter-posts:active{
+    background-color: white;
+    color: blue;
 }
 
 .tags{
+    display: none;
+    flex-direction: row;
     overflow: auto;
     white-space: nowrap;
 }
-
-.create-filter-bar{
-    display: flex;
+.filter-tags{
+    /* padding: 15px 20px;     */
+    /* margin: 10px; */
+    background-color: #008CBA;
+    border: 2px solid transparent;
+    color: white;
 }
+
+
 
 .post{
     display: flex;
     width: 75%;
-    margin: auto;
-    border: 2px solid black;
+    margin: 10px auto;
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 10px rgba(8,7,16,0.6);
     padding: 30px;
     margin-top: 10px;
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
 }
 
 .title-and-body,.likes-and-comments{

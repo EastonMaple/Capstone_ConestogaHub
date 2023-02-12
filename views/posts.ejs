@@ -8,28 +8,27 @@
     <link rel="stylesheet" type="text/css" href="/css/header_footer.css">
     <link rel="stylesheet" type="text/css" href="/css/posts.css">
     <title>Site</title>
+    <script>
+        function showDiv() {
+            document.getElementById('tags').style.display = "flex";
+        }
+    </script>
 </head>
 
-<body>
-    <%- include('includes/header_guest') %>
+<%- include('includes/header_guest') %>
+
+    <main>
         <div class="create-filter-bar">
-            <a class="create-post" href="/post">Create</a>
-            <button class="filter-posts">Filter</button>
+            <a class="create-post" href="/post"><div>Create Post</div></a>
+            <button class="filter-posts" onclick="showDiv()">Filter</button>
             <!--Filter tags-->
-            <div class="tags">
-                <button class="filter-tags">Filter Tag</button>
-                <button class="filter-tags">Filter Tag</button>
-                <button class="filter-tags">Filter Tag</button>
-                <button class="filter-tags">Filter Tag</button>
-                <button class="filter-tags">Filter Tag</button>
-                <button class="filter-tags">Filter Tag</button>
-                <button class="filter-tags">Filter Tag</button>
-                <button class="filter-tags">Filter Tag</button>
-                <button class="filter-tags">Filter Tag</button>
-                <button class="filter-tags">Filter Tag</button>
-                <button class="filter-tags">Filter Tag</button>
-                <button class="filter-tags">Filter Tag</button>
-                <button class="filter-tags">Filter Tag</button>
+            <div class="tags" id="tags">
+                <div class="filter-tags"><div>Filter Tag</div></div>
+                <div class="filter-tags"><div>Filter Tag</div></div>
+                <div class="filter-tags"><div>Filter Tag</div></div>
+                <div class="filter-tags"><div>Filter Tag</div></div>
+                <div class="filter-tags"><div>Filter Tag</div></div>
+                <div class="filter-tags"><div>Filter Tag</div></div>
             </div>
         </div>
 
@@ -67,7 +66,7 @@
                     Profile Picture
                 </div>
                 <div class="username">
-                    Salim Sema
+                    Khaled
                 </div>
             </div>
             <div class="title-and-body">
@@ -95,7 +94,7 @@
                     Profile Picture
                 </div>
                 <div class="username">
-                    Salim Sema
+                    Hefei
                 </div>
             </div>
             <div class="title-and-body">
@@ -116,9 +115,6 @@
                 <div class="comments">Comments: 50</div>
             </div>
         </div>
+    </main>
 
-
-        <%- include('includes/footer') %>
-</body>
-
-</html>
+<%- include('includes/footer') %>
