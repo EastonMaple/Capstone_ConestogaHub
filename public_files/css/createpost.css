@@ -1,0 +1,53 @@
+.submission {
+    position: relative;
+
+}
+
+html{
+    font-family: 'Open Sans', sans-serif;
+}
+
+input[type=submit]{
+    background-color: orange;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin: auto;
+}
+
+#postForm{
+    width: 75%;
+    margin: auto;
+}
+
+.title, .tag, #tags, #title{
+padding: 10px;
+}
+
+.errors{
+    color: red;
+    height: 50px;
+}
+
+/*The input field*/
+.title{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+}
+/*title label*/
+.tag:first-child{
+margin-right: 10px;
+color: red;
+}
+
+
+#title{
+    width: 100%;
+}

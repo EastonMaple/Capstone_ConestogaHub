@@ -1,0 +1,30 @@
+.container{
+    display: grid;
+    grid-template-areas: 
+    'topleft right'
+    'bottomleft right';
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 2fr 1fr;
+    width: 80%;
+    margin: auto;
+}
+
+.top-left{
+    grid-area: topleft;
+    background-color: green;
+    padding: 10px;
+}
+
+.bottom-left{
+    grid-area: bottomleft;
+    background-color: blue;
+    padding: 10px;
+
+}
+
+.right{
+    grid-area: right;
+    background-color: burlywood;
+    padding: 10px;
+
+}

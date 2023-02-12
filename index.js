@@ -41,12 +41,12 @@ myApp.get('/register', function (req, res) {
 
 //Opening the "Create a post"
 myApp.get('/post',function(req,res){
-    res.render('post');
+    res.render('createpost');
 });
 
 //Creating a post (POST)
 myApp.post('/postprocess', function (req, res) {
-    
+
 });
 
 //Posts route
