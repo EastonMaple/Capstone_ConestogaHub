@@ -1,32 +1,38 @@
-.submission {
-    position: relative;
-
-}
-
 html{
     font-family: 'Open Sans', sans-serif;
 }
 
+label{
+    display: inline-block;
+    width: 60px;
+}
+
 input[type=submit]{
     background-color: orange;
+    font-weight: bold;
     border: none;
     color: white;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
-    position: absolute;
-    right: 0;
+    position: relative;
+    right: -90%;
     top: 50%;
     margin: auto;
+    border: 2px solid transparent;
 }
-
+input[type=submit]:hover{
+    color: orange;
+    background-color: white;
+    cursor: pointer;
+    border: 2px solid black;
+}
 #postForm{
     width: 75%;
-    margin: auto;
 }
 
-.title, .tag, #tags, #title{
-padding: 10px;
+.title, .tag, .photo, #tags, #title{
+    padding: 10px;
 }
 
 .errors{
@@ -39,15 +45,57 @@ padding: 10px;
     display: flex;
     gap: 10px;
     align-items: center;
-
 }
 /*title label*/
-.tag:first-child{
-margin-right: 10px;
-color: red;
-}
+/* .tag:first-child{
+    width: 20px;
+    margin-right: 10px;
+    color: red;
+} */
 
 
 #title{
     width: 100%;
+}
+
+/* circle shape css */
+.background{
+    width: 80%;
+    position: absolute;
+    left: 10%;
+}
+.background .shape{
+    height: 200px;
+    width: 200px;
+    position: relative;
+    border-radius: 50%;
+}
+.shape:first-child{
+    background: linear-gradient(
+        #1845ad,
+        #23a2f6
+    );
+    left: -140px;
+    top: -50px;
+}
+.shape:last-child{
+    background: linear-gradient(
+        to right,
+        #ff512f,
+        #f09819
+    );
+    left: 90%;
+    bottom: -456px;
+}
+
+form{
+    margin: 30px auto;
+    width: 400px;
+    background-color: rgba(255,255,255,0.13);
+    position: relative;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
 }
