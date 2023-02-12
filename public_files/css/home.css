@@ -1,4 +1,5 @@
 .container{
+    font-family: 'Open Sans', sans-serif;
     display: grid;
     grid-template-areas: 
     'topleft right'
@@ -7,6 +8,10 @@
     grid-template-rows: 2fr 1fr;
     width: 80%;
     margin: auto;
+}
+
+h2{
+    margin-left: 10px;
 }
 
 .top-left{
@@ -22,9 +27,76 @@
 
 }
 
+.bottom-left h2{
+    display: inline-block;
+    width: 60%;
+}
+
 .right{
     grid-area: right;
     background-color: burlywood;
     padding: 10px;
 
+}
+
+.wiki{
+    display: flex;
+    margin: 20px;
+    gap: 20px;
+}
+
+/*all links*/
+a{
+    color: black;
+    text-decoration: none;
+}
+
+li{
+    margin: 5px;
+}
+
+.right h2{
+    display: inline-block;
+    width: 45%;
+}
+
+#wiki-image{
+  height: 500px;
+  width: 300px;
+  object-fit: cover;
+
+}
+
+.profile{
+    display: grid;
+    grid-template-areas: 
+    'profile-picture username'
+    'profile-picture program'
+    'profile-picture description';
+    grid-template-columns: 1fr 3fr;
+}
+
+#username{
+    grid-area: username;
+}
+
+#program{
+    grid-area: program;
+}
+
+#description{
+    grid-area: description;
+}
+
+
+#profile-picture{
+    grid-area: profile-picture;
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    margin: 0 20px;
+}
+
+input[type=file]{
+    width: 90px;
 }

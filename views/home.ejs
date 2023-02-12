@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,21 +13,83 @@
 
 <!-- todo: check if user is logged in -->
 <%- include('includes/header_guest') %>
-	
-<body>
-    <div class="container">
-        <div class="top-left">
-            <h2>Hot Weekly Wiki</h2>
-            <hr style="border: 1px solid black;">
-        </div>
-        <div class="bottom-left">
-            bottom-left
-        </div>
-        <div class="right">
-            right
-        </div>
-    </div>
 
-</body>
+    <body>
+        <div class="container">
+            <div class="top-left">
+                <h2>Hot Weekly Wiki</h2>
+                <hr style="border: 2px solid lightgray;">
+                <div class="wiki">
+                    <img id="wiki-image" src="/images/skhy-logo.png" alt="Skhy logo">
+                    <div class="wiki-links">
+                        <div class="wiki-link">
+                            <a href="">Wiki title #1</a>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum, optio ab corrupti
+                                voluptate aliquid expedita repudiandae odio explicabo aliquam odit suscipit minima
+                                adipisci ut commodi laudantium, distinctio, perferendis incidunt voluptates?</p>
+                        </div>
+                        <div class="wiki-link">
+                            <a href="">Wiki title #1</a>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum, optio ab corrupti
+                                voluptate aliquid expedita repudiandae odio explicabo aliquam odit suscipit minima
+                                adipisci ut commodi laudantium, distinctio, perferendis incidunt voluptates?</p>
+                        </div>
+                        <div class="wiki-link">
+                            <a href="">Wiki title #1</a>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum, optio ab corrupti
+                                voluptate aliquid expedita repudiandae odio explicabo aliquam odit suscipit minima
+                                adipisci ut commodi laudantium, distinctio, perferendis incidunt voluptates?</p>
+                        </div>
+                    </div>
+                </div>
 
-<%- include('includes/footer') %>
+            </div>
+            <div class="bottom-left">
+                <hr style="border: 2px solid lightgray;">
+                <h2>Your Profile</h2>
+                <span class="photo">
+                    <label for="photo">Upload Picture:</label>
+                    <input type="file" id="photo" name="photo">
+                </span>
+                <!--Vertical line-->
+                <span class="vertical-line" style="border-left:1px solid black; margin: 0 5px;">
+                </span>
+                <span>
+                    <a href="">Edit Information</a>
+                </span>
+                <div class="profile">
+                    <img id="profile-picture" src="/images/skhy-logo.png" alt="Profile Pic">
+                    <h3 id="username">Yunxian Li</h3>
+                    <h4 id="program">Computer Application Development</h4>
+                    <p id="description">I am awesome!</p>
+                </div>
+                
+            </div>
+            <div class="right">
+                <h2>Forum</h2>
+                <label>
+                    <input type="radio" name="radio" />
+                    HOT
+                  </label>
+                  <label>
+                    <input type="radio" name="radio" />
+                    NEW
+                  </label>
+                <hr style="border: 2px solid lightgray;">
+                <ul>
+                    <li><a href="">Links taken from posts</a></li>
+                    <li><a href="">Links taken from posts</a></li>
+                    <li><a href="">Links taken from posts</a></li>
+                    <li><a href="">Links taken from posts</a></li>
+                    <li><a href="">Links taken from posts</a></li>
+                    <li><a href="">Links taken from posts</a></li>
+                    <li><a href="">Links taken from posts</a></li>
+                    <li><a href="">Links taken from posts</a></li>
+                </ul>
+
+            </div>
+        </div>
+
+    </body>
+
+    <%- include('includes/footer') %>
