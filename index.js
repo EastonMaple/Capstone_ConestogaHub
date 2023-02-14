@@ -9,9 +9,6 @@ const { check, validationResult } = require('express-validator');
 //connect to database
 connectDB();
 
-//Define the models
-
-
 //Create a express variable
 var myApp = express();
 
@@ -23,7 +20,7 @@ myApp.set('view engine', 'ejs');
 myApp.set('views', path.join(__dirname, 'views'));
 
 //Set up the body parser
-myApp.use(express.urlencoded({ extended: false }));
+myApp.use(express.json({ extended: false }));
 
 //routes
 myApp.get('/', function (req, res) {
@@ -36,9 +33,9 @@ myApp.get('/login', function (req, res) {
 myApp.get('/register', function (req, res) {
     res.render('register');
 });
-myApp.get('/users', require('./controllers/users'));
-myApp.get('/auth', require('./controllers/auth'));
-myApp.get('/profile', require('./controllers/profile'));
+myApp.use('/users', require('./controllers/users'));
+myApp.use('/auth', require('./controllers/auth'));
+myApp.use('/profile', require('./controllers/profile'));
 
 
 //Opening the "Create a post"
