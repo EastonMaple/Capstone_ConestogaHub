@@ -36,6 +36,10 @@ myApp.get('/login', function (req, res) {
 myApp.get('/register', function (req, res) {
     res.render('register');
 });
+myApp.get('/users', require('./controllers/users'));
+myApp.get('/auth', require('./controllers/auth'));
+myApp.get('/profile', require('./controllers/profile'));
+
 
 //Opening the "Create a post"
 myApp.get('/post',function(req,res){
