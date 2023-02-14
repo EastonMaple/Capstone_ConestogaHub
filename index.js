@@ -1,15 +1,13 @@
 //Importing the express server
 const express = require('express');
+const connectDB = require('./config/db');
 const path = require('path');
 
 //Set up the inbuilt express validator for basic validation
 const { check, validationResult } = require('express-validator');
 
-//Import mongoose library
-const mongoose = require('mongoose');
-
 //connect to database
-//mongoose.connect('mongodb://127.0.0.1:27017/capstone_conestogahub');
+connectDB();
 
 //Define the models
 
