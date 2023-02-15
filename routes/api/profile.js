@@ -1,5 +1,5 @@
 const express = require('express');
-// const axios = require('axios');
+const axios = require('axios');
 const config = require('config');
 const router = express.Router();
 const auth = require('../../middleware/auth');
@@ -10,6 +10,7 @@ const checkObjectId = require('../../middleware/checkObjectId');
 
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
+const { response } = require('express');
 // const Post = require('../../models/Post');
 
 // @route   GET api/profile/me
@@ -17,7 +18,7 @@ const User = require('../../models/User');
 // @access  Private
 router.get('/me', auth, async (req, res) => {
   try {
-    // find the user field with the user.id value. 
+    // find the user field with the user.id value.
     // The populate() method is used to include additional fields from the referenced user document in the result.
     const profile = await Profile.findOne({
       user: req.user.id,
@@ -71,7 +72,7 @@ router.post(
       skills: Array.isArray(skills)
         ? skills
         : skills.split(',').map((skill) => ' ' + skill.trim()),
-      ...rest
+      ...rest,
     };
 
     // Build socialFields object
@@ -123,7 +124,7 @@ router.get(
   async ({ params: { user_id } }, res) => {
     try {
       const profile = await Profile.findOne({
-        user: user_id
+        user: user_id,
       }).populate('user', ['name', 'avatar']);
 
       if (!profile) return res.status(400).json({ msg: 'Profile not found' });
@@ -147,7 +148,7 @@ router.delete('/', auth, async (req, res) => {
     await Promise.all([
       // Post.deleteMany({ user: req.user.id }),
       Profile.findOneAndRemove({ user: req.user.id }),
-      User.findOneAndRemove({ _id: req.user.id })
+      User.findOneAndRemove({ _id: req.user.id }),
     ]);
 
     res.json({ msg: 'User deleted' });
@@ -258,6 +259,27 @@ router.delete('/education/:edu_id', auth, async (req, res) => {
   } catch (error) {
     console.error(error);
     return res.status(500).json({ msg: 'Server error' });
+  }
+});
+
+// @route    GET api/profile/github/:username
+// @desc     Get user repos from Github
+// @access   Public
+router.get('/github/:username', async (req, res) => {
+  try {
+    const uri = encodeURI(
+      `https://api.github.com/users/${req.params.username}/repos?per_page=5&sort=created:asc`
+    );
+    const headers = {
+      'user-agent': 'node.js',
+      Authorization: `token ${config.get('githubToken')}`
+    };
+
+    const gitHubResponse = await axios.get(uri, { headers });
+    return res.json(gitHubResponse.data);
+  } catch (err) {
+    console.error(err.message);
+    return res.status(404).json({ msg: 'No Github profile found' });
   }
 });
 
