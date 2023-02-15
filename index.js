@@ -24,35 +24,31 @@ myApp.use(express.json({ extended: false }));
 
 //routes
 myApp.get('/', function (req, res) {
-    res.render('home');
+  res.render('home');
 });
 
 myApp.get('/login', function (req, res) {
-    res.render('login');
+  res.render('login');
 });
 myApp.get('/register', function (req, res) {
-    res.render('register');
+  res.render('register');
 });
-myApp.use('/users', require('./controllers/users'));
-myApp.use('/auth', require('./controllers/auth'));
-myApp.use('/profile', require('./controllers/profile'));
-
+myApp.use('/api/users', require('./routes/api/users'));
+myApp.use('/api/auth', require('./routes/api/auth'));
+myApp.use('/api/profile', require('./routes/api/profile'));
 
 //Opening the "Create a post"
-myApp.get('/post',function(req,res){
-    res.render('createpost');
+myApp.get('/post', function (req, res) {
+  res.render('createpost');
 });
 
 //Creating a post (POST)
-myApp.post('/postprocess', function (req, res) {
-
-});
+myApp.post('/postprocess', function (req, res) {});
 
 //Posts route
 myApp.get('/posts', function (req, res) {
-    res.render('posts');
+  res.render('posts');
 });
-
 
 //assigning the port
 myApp.listen(8080);
