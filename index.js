@@ -36,6 +36,7 @@ myApp.get('/register', function (req, res) {
 myApp.use('/api/users', require('./routes/api/users'));
 myApp.use('/api/auth', require('./routes/api/auth'));
 myApp.use('/api/profile', require('./routes/api/profile'));
+myApp.use('/api/posts', require('./routes/api/post'));
 
 //Opening the "Create a post"
 myApp.get('/post', function (req, res) {
