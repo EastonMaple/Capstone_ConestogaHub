@@ -55,4 +55,4 @@ myApp.get('/posts', function (req, res) {
 myApp.listen(8080);
 
 //website home page
-console.log('Open http://localhost:8080/');
+console.log('Open http://127.0.0.1:8080/');
