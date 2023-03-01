@@ -16,6 +16,8 @@ const initialState = {
   user: null
 };
 
+// When an action is dispatched, it's handled by a reducer function.
+// The reducer takes the current state and the action as arguments and returns a new state object that reflects the changes described by the action.
 function authReducer(state = initialState, action) {
   const { type, payload } = action;
 
