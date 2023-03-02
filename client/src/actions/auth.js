@@ -20,17 +20,13 @@ import {
 // Load User
 export const loadUser = () => async (dispatch) => {
   try {
-    // Get the user data from the API
     const res = await api.get('/auth');
 
-    // Dispatch the user data to the reducer
-    // The reducer will update the state
     dispatch({
       type: USER_LOADED,
       payload: res.data
     });
   } catch (err) {
-    // If there's an error, dispatch an error message
     dispatch({
       type: AUTH_ERROR
     });

@@ -2,7 +2,6 @@ import { SET_ALERT, REMOVE_ALERT } from '../actions/types';
 
 const initialState = [];
 
-// The function checks the type of the action and returns the appropriate state.
 function alertReducer(state = initialState, action) {
   const { type, payload } = action;
 
