@@ -46,6 +46,7 @@ router.post(
         d: 'mm',
       });
 
+      // create a new user document
       user = new User({
         name,
         email,
