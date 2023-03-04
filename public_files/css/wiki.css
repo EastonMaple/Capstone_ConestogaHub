@@ -1,0 +1,145 @@
+ .mp-box {
+    border: 1px solid #aaa;
+    padding: 0 0.5em 0.5em;
+    margin-top: 4px
+}
+
+.mw-parser-output .mp-h2,
+body.skin-timeless .mw-parser-output .mp-h2 {
+    border: 1px solid #aaa;
+    margin: 0.5em 0;
+    padding: 0.2em 0.4em;
+    font-size: 120%;
+    font-weight: bold;
+    font-family: inherit
+}
+
+.mw-parser-output .mp-later {
+    font-size: 85%;
+    font-weight: normal
+}
+
+.mw-parser-output #mp-topbanner {
+    background: #f9f9f9;
+    border-color: #ddd
+}
+
+.mw-parser-output #mp-welcomecount {
+    text-align: center;
+    margin: 0.4em
+}
+
+.mw-parser-output #mp-welcome {
+    font-size: 162%;
+    padding: 0.1em
+}
+
+.mw-parser-output #mp-welcome h1 {
+    font-size: inherit;
+    font-family: inherit;
+    display: inline;
+    border: none
+}
+
+.mw-parser-output #mp-free {
+    font-size: 95%
+}
+
+.mw-parser-output #articlecount {
+    font-size: 85%
+}
+
+.mw-parser-output .mp-contains-float::after {
+    content: "";
+    display: block;
+    clear: both
+}
+
+.mw-parser-output #mp-banner {
+    background: #fffaf5;
+    border-color: #f2e0ce
+}
+
+.mw-parser-output #mp-left {
+    background: #f5fffa;
+    border-color: #cef2e0
+}
+
+.mw-parser-output #mp-left .mp-h2 {
+    background: #cef2e0;
+    border-color: #a3bfb1
+}
+
+.mw-parser-output #mp-right {
+    background: #f5faff;
+    border-color: #cedff2
+}
+
+.mw-parser-output #mp-right .mp-h2 {
+    background: #cedff2;
+    border-color: #a3b0bf
+}
+
+.mw-parser-output #mp-middle {
+    background: #fff5fa;
+    border-color: #f2cedd
+}
+
+.mw-parser-output #mp-middle .mp-h2 {
+    background: #f2cedd;
+    border-color: #bfa3af
+}
+
+.mw-parser-output #mp-lower {
+    background: #faf5ff;
+    border-color: #ddcef2
+}
+
+.mw-parser-output #mp-lower .mp-h2 {
+    background: #ddcef2;
+    border-color: #afa3bf
+}
+
+.mw-parser-output #mp-bottom {
+    border-color: #e2e2e2
+}
+
+.mw-parser-output #mp-bottom .mp-h2 {
+    background: #eee;
+    border-color: #ddd
+}
+
+@media(max-width:875px) {
+
+    .mw-parser-output #mp-tfp table,
+    .mw-parser-output #mp-tfp tr,
+    .mw-parser-output #mp-tfp td,
+    .mw-parser-output #mp-tfp tbody {
+        display: block !important;
+        width: 100% !important;
+        box-sizing: border-box
+    }
+
+    .mw-parser-output #mp-tfp tr:first-child td:first-child a {
+        text-align: center;
+        display: table;
+        margin: 0 auto
+    }
+}
+
+@media(min-width:875px) {
+    .mw-parser-output #mp-upper {
+        display: flex
+    }
+
+    .mw-parser-output #mp-left {
+        flex: 1 1 55%;
+        margin-right: 2px
+    }
+
+    .mw-parser-output #mp-right {
+        flex: 1 1 45%;
+        margin-left: 2px
+    }
+}
+
