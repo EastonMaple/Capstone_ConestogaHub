@@ -39,6 +39,12 @@ myApp.use('/api/profile', require('./routes/api/profile'));
 myApp.use('/api/posts', require('./routes/api/post'));
 myApp.use('/api/wiki', require('./routes/api/wiki'));
 
+
+//Open wiki page
+myApp.get('/wiki', function (req, res) {
+  res.render('wiki');
+});
+
 //Opening the "Create a post"
 myApp.get('/post', function (req, res) {
   res.render('createpost');
