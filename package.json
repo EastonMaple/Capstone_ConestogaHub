@@ -24,6 +24,8 @@
     "gravatar": "^1.8.2",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.9.1",
+    "nodemailer": "^6.9.1",
+    "nodemailer-smtp-transport": "^2.7.4",
     "normalize-url": "^6.1.0",
     "request": "^2.88.2"
   },
