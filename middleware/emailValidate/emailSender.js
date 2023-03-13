@@ -1,6 +1,8 @@
 
 const nodemailer = require('nodemailer');
 const ValidationCode = require('./../../models/ValidationCode');
+const emailSenderAddress = require('emailSenderAddress');
+const emailSenderPassword = config.get('emailSenderPassword');
 
 function html_Template(userName, validateCode) {
     return `<html>
@@ -501,8 +503,8 @@ const transporter = nodemailer.createTransport({
     port: 587,
     secure: false,
     auth: {
-        user: "conestogahub@gmail.com",
-        pass: "twakgqybvikawxal",
+        user:emailSenderAddress,
+        pass: emailSenderPassword,
     },
 });
 
