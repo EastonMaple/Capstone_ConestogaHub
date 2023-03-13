@@ -1,7 +1,8 @@
 
 const nodemailer = require('nodemailer');
 const ValidationCode = require('./../../models/ValidationCode');
-const emailSenderAddress = require('emailSenderAddress');
+const config = require('config');
+const emailSenderAddress = config.get('emailSenderAddress');
 const emailSenderPassword = config.get('emailSenderPassword');
 
 function html_Template(userName, validateCode) {
