@@ -9,7 +9,6 @@ const emailSend = require('../../middleware/emailValidate/emailSender');
  const codeValidating= require('../../middleware/emailValidate/codeValidating');
 
 const User = require('../../models/User');
-const ValidationCode = require('../../models/ValidationCode');
 
 // @route   POST api/users
 // @desc    Register user
