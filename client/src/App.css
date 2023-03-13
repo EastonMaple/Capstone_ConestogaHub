@@ -582,3 +582,21 @@ button {
   right: 2rem;
   display: inline-block;
 }
+
+
+/*wiki pages*/
+
+.wiki{
+  position: relative;
+  top: 50px; 
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+.my-list{
+  font-size: 16;
+  list-style: circle;
+  width: 90%;
+  margin: auto;
+}
+

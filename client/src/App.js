@@ -4,6 +4,8 @@ import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
+import WikiPage from './components/wiki/WikiPage';
+import WikiIndex from './components/wiki/WikiIndex';
 import Alert from './components/layout/Alert';
 import Dashboard from './components/dashboard/Dashboard';
 import ProfileForm from './components/profile-forms/ProfileForm';
@@ -51,6 +53,8 @@ const App = () => {
           <Route path="/" element={<Landing />} />
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
+          <Route path="wikipage" element={<WikiPage />} />
+          <Route path="wiki" element={<WikiIndex />} />
           <Route path="profiles" element={<Profiles />} />
           <Route path="profile/:id" element={<Profile />} />
           <Route
