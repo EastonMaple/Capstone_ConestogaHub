@@ -4,6 +4,7 @@ const { check, validationResult } = require('express-validator');
 const auth = require('../../middleware/auth');
 
 const Tag = require('../../models/Tag');
+const checkObjectId = require('../../middleware/checkObjectId');
 
 // @route    POST api/tags
 // @desc     Create a tag
@@ -55,5 +56,32 @@ router.get('/', auth, async (req, res) => {
     res.status(500).send('Server Error');
   }
 });
+
+// @route    PUT api/tags/associate/:id/:post_id
+// @desc     Associate a post
+// @access   Private
+router.post(
+  '/associate/:id/:post_id',
+  auth,
+  checkObjectId('id'),
+  async (req, res) => {
+    try {
+      const tag = await Tag.findById(req.params.id);
+
+      const assoPost = {
+        post: req.params.post_id,
+      };
+
+      tag.posts.unshift(assoPost);
+
+      await tag.save();
+
+      res.json(tag.posts);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  }
+);
 
 module.exports = router;
