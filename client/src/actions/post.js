@@ -94,8 +94,9 @@ export const deletePost = (id) => async (dispatch) => {
 // Add post (Exporting allows it to be called from other scripts)
 export const addPost = (formData) => async (dispatch) => {
   try {
-    const res = await api.post('/posts', formData);
+    console.log(formData);
 
+    const res = await api.post('/posts', formData);
     dispatch({
       type: ADD_POST,
       payload: res.data
@@ -103,6 +104,7 @@ export const addPost = (formData) => async (dispatch) => {
 
     dispatch(setAlert('Post Created', 'success'));
   } catch (err) {
+    console.log("catch error" , err);
     dispatch({
       type: POST_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status }

@@ -13,7 +13,9 @@ const checkObjectId = require('../../middleware/checkObjectId');
 router.post(
   '/',
   auth,
-  check('text', 'Text is required').notEmpty(),
+  check('bodyText', 'Body Text is required').notEmpty(),
+  check('titleText', 'Title Text is required').notEmpty(),
+  check('tag', 'Tag is required').notEmpty(),
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -24,7 +26,9 @@ router.post(
       const user = await User.findById(req.user.id).select('-password');
 
       const newPost = new Post({
-        text: req.body.text,
+        titleText: req.body.titleText,
+        bodyText: req.body.bodyText,
+        tag: req.body.tag,
         name: user.name,
         avatar: user.avatar,
         user: req.user.id

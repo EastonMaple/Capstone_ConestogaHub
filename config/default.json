@@ -1,0 +1,7 @@
+{
+  "mongoURI": "",
+  "jwtSecret": "secretkey",
+  "githubToken":"",
+  "emailSenderAddress":"",
+  "emailSenderPassword":""
+}

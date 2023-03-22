@@ -10,17 +10,19 @@ const PostItem = ({
   removeLike,
   deletePost,
   auth,
-  post: { _id, text, name, avatar, user, likes, comments, date }
+  post: { _id, titleText, bodyText, tag, name, avatar, user, likes, comments, date }
 }) => (
   <div className="post bg-white p-1 my-1">
     <div>
+    <button className="btn btn-secondary" style={{marginBottom:"10px"}} disabled>{tag ?? "No tag"}</button>
       <Link to={`/profile/${user}`}>
         <img className="round-img" src={avatar} alt="" />
         <h4>{name}</h4>
       </Link>
     </div>
     <div>
-      <p className="my-1">{text}</p>
+      <p className="my-1" style={{fontWeight:"bold",fontSize:"20px"}}>{titleText}</p>
+      <p className="my-1">{bodyText}</p>
       <p className="post-date">Posted on {formatDate(date)}</p>
 
       <button

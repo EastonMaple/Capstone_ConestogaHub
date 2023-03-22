@@ -5,7 +5,15 @@ const PostSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId
   },
-  text: {
+  bodyText: {
+    type: String,
+    required: true
+  },
+  titleText: {
+    type: String,
+    required: true
+  },
+  tag: {
     type: String,
     required: true
   },
