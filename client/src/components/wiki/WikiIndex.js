@@ -3,9 +3,9 @@ import { Link, Navigate } from 'react-router-dom';
 
 export const wikiPagesDict = {
     "part time jobs" : "/WikiPage",
-    "study permit" : "/WikiPage2",
+    "health insurance" : "/WikiPage2",
     "work permit" : "/WikiPage3",
-    "health insurance" : "/WikiPage4",
+    "study permit" : "/WikiPage4",
 
 
 }
@@ -18,8 +18,8 @@ const WikiIndex = () => {
       <ul className='my-list'>
         <Link to = {wikiPagesDict["part time jobs"]}><li>How to find part-time jobs</li></Link>
         <li>How to apply for study permit (and extension)</li>
-        <li>How to apply for work permit</li>
-        <li>Health Insurance</li>
+        <Link to = {wikiPagesDict["work permit"]}><li>How to apply for work permit</li></Link>
+        <Link to = {wikiPagesDict["health insurance"]}><li>Health Insurance</li></Link>
         <li>How to find your timetable</li>
         <li>How to find room for rent</li>
         <li>How to apply for G1 license</li>

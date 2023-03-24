@@ -5,6 +5,8 @@ import Landing from './components/layout/Landing';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import WikiPage from './components/wiki/WikiPage';
+import WikiPage2 from './components/wiki/WikiPage2';
+import WikiPage3 from './components/wiki/WikiPage3';
 import WikiIndex from './components/wiki/WikiIndex';
 import Alert from './components/layout/Alert';
 import Dashboard from './components/dashboard/Dashboard';
@@ -54,6 +56,8 @@ const App = () => {
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
           <Route path="wikipage" element={<WikiPage />} />
+          <Route path="wikipage2" element={<WikiPage2 />} />
+          <Route path="wikipage3" element={<WikiPage3 />} />
           <Route path="wiki" element={<WikiIndex />} />
           <Route path="profiles" element={<Profiles />} />
           <Route path="profile/:id" element={<Profile />} />
