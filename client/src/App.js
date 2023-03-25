@@ -8,6 +8,7 @@ import WikiPage from './components/wiki/WikiPage';
 import WikiPage2 from './components/wiki/WikiPage2';
 import WikiPage3 from './components/wiki/WikiPage3';
 import WikiIndex from './components/wiki/WikiIndex';
+import WikiPageDBSingle from './components/wiki/WikiPageDBSingle';
 import Alert from './components/layout/Alert';
 import Dashboard from './components/dashboard/Dashboard';
 import ProfileForm from './components/profile-forms/ProfileForm';
@@ -52,38 +53,39 @@ const App = () => {
         <Navbar />
         <Alert />
         <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="register" element={<Register />} />
-          <Route path="login" element={<Login />} />
-          <Route path="wikipage" element={<WikiPage />} />
-          <Route path="wikipage2" element={<WikiPage2 />} />
-          <Route path="wikipage3" element={<WikiPage3 />} />
-          <Route path="wiki" element={<WikiIndex />} />
-          <Route path="profiles" element={<Profiles />} />
-          <Route path="profile/:id" element={<Profile />} />
+          <Route path='/' element={<Landing />} />
+          <Route path='register' element={<Register />} />
+          <Route path='login' element={<Login />} />
+          <Route path='wikipage' element={<WikiPage />} />
+          <Route path='wikipage2' element={<WikiPage2 />} />
+          <Route path='wikipage3' element={<WikiPage3 />} />
+          <Route path='wiki' element={<WikiIndex />} />
+          <Route path='wiki/:id' element={<WikiPageDBSingle />} />
+          <Route path='profiles' element={<Profiles />} />
+          <Route path='profile/:id' element={<Profile />} />
           <Route
-            path="dashboard"
+            path='dashboard'
             element={<PrivateRoute component={Dashboard} />}
           />
           <Route
-            path="create-profile"
+            path='create-profile'
             element={<PrivateRoute component={ProfileForm} />}
           />
           <Route
-            path="edit-profile"
+            path='edit-profile'
             element={<PrivateRoute component={ProfileForm} />}
           />
           <Route
-            path="add-experience"
+            path='add-experience'
             element={<PrivateRoute component={AddExperience} />}
           />
           <Route
-            path="add-education"
+            path='add-education'
             element={<PrivateRoute component={AddEducation} />}
           />
-          <Route path="posts" element={<PrivateRoute component={Posts} />} />
-          <Route path="posts/:id" element={<PrivateRoute component={Post} />} />
-          <Route path="/*" element={<NotFound />} />
+          <Route path='posts' element={<PrivateRoute component={Posts} />} />
+          <Route path='posts/:id' element={<PrivateRoute component={Post} />} />
+          <Route path='/*' element={<NotFound />} />
         </Routes>
       </Router>
     </Provider>
