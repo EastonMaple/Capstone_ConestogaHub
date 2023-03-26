@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import api from '../../utils/api';
 import BackgroundGrid from '../decorative/BackgroundGrid';
+import './WikiPageDBSingle.css';
 
 // get a single wiki
 const getSingleWiki = async (id) => {
@@ -35,22 +36,18 @@ const WikiPageDBSingle = () => {
       <div className='relative overflow-hidden bg-white py-16'>
         <BackgroundGrid />
         <div className='relative px-6 lg:px-8'>
-          <div className='mx-auto max-w-prose text-lg'>
+          <div className='mx-auto max-w-screen-lg text-lg'>
             <h1>
-              <span className='block text-center text-lg font-semibold text-indigo-600'>
+              <span className='block text-center text-lg font-semibold text-indigo-600 mt-4'>
                 Test Tag {/*wikis.tag*/}
               </span>
               <span className='mt-2 block text-center text-3xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl'>
                 {wikis.title}
               </span>
             </h1>
-            <div dangerouslySetInnerHTML={{ __html: wikis.text }}></div>
-            <p className='mt-8 text-xl leading-8 text-gray-500'>
-              Aliquet nec orci mattis amet quisque ullamcorper neque, nibh sem.
-              At arcu, sit dui mi, nibh dui, diam eget aliquam. Quisque id at
-              vitae feugiat egestas ac. Diam nulla orci at in viverra
-              scelerisque eget. Eleifend egestas fringilla sapien.
-            </p>
+            <div className='contentContainer p-4'>
+              <div dangerouslySetInnerHTML={{ __html: wikis.text }}></div>
+            </div>
           </div>
 
           <div className='lg:pr-4'>

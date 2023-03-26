@@ -1,0 +1,43 @@
+.contentContainer {
+  @apply mt-6
+}
+
+.contentContainer p {
+  @apply p-2 text-xl leading-8 text-gray-500;
+}
+.contentContainer h1 {
+  @apply mt-4 font-bold	text-3xl leading-8 text-gray-700;
+}
+.contentContainer h2 {
+  @apply mt-4 font-bold	text-2xl leading-8 text-gray-700;
+}
+.contentContainer h3 {
+  @apply text-xl leading-8 text-gray-700;
+}
+.contentContainer h4 {
+  @apply text-lg leading-8 text-gray-700;
+}
+.contentContainer h5 {
+  @apply text-base leading-8 text-gray-700;
+}
+.contentContainer h6 {
+  @apply text-sm leading-8 text-gray-700;
+}
+.contentContainer ul {
+  @apply list-disc;
+}
+.contentContainer ol {
+  @apply list-decimal;
+}
+.contentContainer li {
+  @apply ml-6 text-xl leading-8 text-gray-500;
+}
+.contentContainer a {
+  @apply text-blue-500;
+}
+.contentContainer a:hover {
+  @apply text-blue-700;
+}
+.contentContainer a:active {
+  @apply text-blue-900;
+}

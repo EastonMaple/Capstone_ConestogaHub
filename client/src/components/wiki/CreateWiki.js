@@ -31,6 +31,7 @@ const CreateWiki = () => {
     }
   };
 
+  // editor is tynimce
   return (
     <>
       <div className='container'>
