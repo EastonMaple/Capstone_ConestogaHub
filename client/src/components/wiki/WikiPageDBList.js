@@ -37,6 +37,7 @@ const WikiPageDBList = () => {
   return (
     <>
       {wikisList}
+      <Link to="/create-wiki">Create a new wiki</Link>
     </>
   );
 }

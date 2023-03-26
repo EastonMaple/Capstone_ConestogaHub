@@ -6,13 +6,13 @@ const { check, validationResult } = require('express-validator');
 //import middleware
 const auth = require('../../middleware/auth');
 const paramValidate = require('../../middleware/ParamValidate');
-// router.use(auth);
+router.use(auth);
 
 //import models
 const Wiki = require('../../models/Wiki');
 const User = require('../../models/User');
 
-//creat wiki
+//create wiki
 router.post(
   '/createWiki',
   check('title', 'Title is required').notEmpty(),

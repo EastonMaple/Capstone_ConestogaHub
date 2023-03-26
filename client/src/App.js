@@ -9,6 +9,7 @@ import WikiPage2 from './components/wiki/WikiPage2';
 import WikiPage3 from './components/wiki/WikiPage3';
 import WikiIndex from './components/wiki/WikiIndex';
 import WikiPageDBSingle from './components/wiki/WikiPageDBSingle';
+import CreateWiki from './components/wiki/CreateWiki';
 import Alert from './components/layout/Alert';
 import Dashboard from './components/dashboard/Dashboard';
 import ProfileForm from './components/profile-forms/ProfileForm';
@@ -61,6 +62,7 @@ const App = () => {
           <Route path='wikipage3' element={<WikiPage3 />} />
           <Route path='wiki' element={<WikiIndex />} />
           <Route path='wiki/:id' element={<WikiPageDBSingle />} />
+          <Route path='create-wiki' element={<CreateWiki />} />
           <Route path='profiles' element={<Profiles />} />
           <Route path='profile/:id' element={<Profile />} />
           <Route
