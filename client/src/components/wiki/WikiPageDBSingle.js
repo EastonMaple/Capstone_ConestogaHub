@@ -25,7 +25,7 @@ const WikiPageDBSingle = () => {
     getSingleWiki(id).then((data) => {
       setWikis(data);
     });
-  }, []);
+  }, [id]);
 
   // const commentList = wikis.comments?.map((comment) => {
   //   return <div>{comment.name}</div>;

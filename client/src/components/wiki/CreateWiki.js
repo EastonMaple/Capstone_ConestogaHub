@@ -1,6 +1,6 @@
-import React, { Fragment, useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import api from '../../utils/api';
 
 const CreateWiki = () => {
@@ -9,7 +9,8 @@ const CreateWiki = () => {
     text: '',
   });
 
-  const { title, content } = formData;
+  const { title } = formData;
+  const navigate = useNavigate();
 
   // for title change
   const onChange = (e) =>
@@ -19,6 +20,7 @@ const CreateWiki = () => {
     e.preventDefault();
     api.post('/wiki/createWiki', formData);
     console.log('Success');
+    navigate('/wiki');
   };
 
   // this is to get the content from the editor and set it to the content state
