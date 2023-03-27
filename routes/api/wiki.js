@@ -90,9 +90,9 @@ router.delete('/:id', paramValidate, async (req, res) => {
     }
 
     // Check user
-    if (wiki.user.id.toString() !== req.user.id) {
-      return res.status(401).json({ msg: 'User not authorized' });
-    }
+    // if (wiki.user.id.toString() !== req.user.id) {
+    //   return res.status(401).json({ msg: 'User not authorized' });
+    // }
 
     await wiki.remove();
 

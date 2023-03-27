@@ -4,6 +4,7 @@ import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
+import SchoolLink from './components/school-link/SchoolLink';
 import WikiPage from './components/wiki/WikiPage';
 import WikiPage2 from './components/wiki/WikiPage2';
 import WikiPage3 from './components/wiki/WikiPage3';
@@ -57,6 +58,7 @@ const App = () => {
           <Route path='/' element={<Landing />} />
           <Route path='register' element={<Register />} />
           <Route path='login' element={<Login />} />
+          <Route path='school-link' element={<SchoolLink />} />
           <Route path='wikipage' element={<WikiPage />} />
           <Route path='wikipage2' element={<WikiPage2 />} />
           <Route path='wikipage3' element={<WikiPage3 />} />
