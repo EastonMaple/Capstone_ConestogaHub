@@ -13,14 +13,15 @@ const PostItem = ({
   post: { _id, titleText, bodyText, tag, name, avatar, user, likes, comments, date }
 }) => (
   <div className="post bg-white p-1 my-1">
+    {/* style={{display:"flex",justifyContent:"center", flexFlow:"column"}} */}
     <div>
-    <button className="btn btn-secondary" style={{marginBottom:"10px"}} disabled>{tag ?? "No tag"}</button>
       <Link to={`/profile/${user}`}>
-        <img className="round-img" src={avatar} alt="" />
+        <img className="round-img" src={avatar} alt="" style={{ margin:"auto"}} />
         <h4>{name}</h4>
       </Link>
     </div>
     <div>
+    <button className="btn btn-secondary" style={{marginBottom:"10px"}} disabled>{tag ?? "No tag"}</button>
       <p className="my-1" style={{fontWeight:"bold",fontSize:"20px"}}>{titleText}</p>
       <p className="my-1">{bodyText}</p>
       <p className="post-date">Posted on {formatDate(date)}</p>

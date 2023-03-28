@@ -19,13 +19,24 @@ import {
 */
 
 // Get posts (Exporting allows it to be called from other scripts)
-export const getPosts = () => async (dispatch) => {
+export const getPosts = (tag) => async (dispatch) => {
   try {
+    var currentPosts;
+    if(tag == null) tag = '';
     const res = await api.get('/posts');
+    //Ensure we have a post.tag (if we don't include && we will get undefined problems)
+    const filteredPosts = res.data.filter(post => post.tag && post.tag.includes(tag));
 
+    //No tag given
+    if(tag == ''){
+      currentPosts = res.data;
+    }else{
+      currentPosts = filteredPosts;
+    }
+    
     dispatch({
       type: GET_POSTS,
-      payload: res.data
+      payload: currentPosts
     });
   } catch (err) {
     dispatch({
@@ -164,4 +175,11 @@ export const deleteComment = (postId, commentId) => async (dispatch) => {
       payload: { msg: err.response.statusText, status: err.response.status }
     });
   }
+};
+
+
+//New method to get post with tag.
+export const getPostWithTag = () => async (dispatch) =>{
+  const res = await api.get(`/tags`);
+
 };
