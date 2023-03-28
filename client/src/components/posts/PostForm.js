@@ -37,7 +37,8 @@ const PostForm = ({ addPost }) => {
             onChange={e => setTitleText(e.target.value)}
             required
           />
-          <select className="my-1" aria-label="Default select example" value={tag} onChange={e => setTag(e.target.value)}>
+          <select className="my-1" aria-label="Default select example" value={tag} onChange={e => setTag(e.target.value)}
+>
             <option disabled defaultValue>Post Tag</option>
             <option value="Carpooling">Carpooling</option>
             <option value="Meeting">Meeting</option>
@@ -57,7 +58,6 @@ const PostForm = ({ addPost }) => {
           required
         />
         <input type='submit' className='btn btn-dark my-1' value='Submit' />
-        
       </form>
     </div>
   );

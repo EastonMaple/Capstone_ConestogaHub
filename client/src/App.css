@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 /* Global Styles */
 :root {
   --primary-color: #17a2b8;
@@ -605,25 +604,3 @@ button {
   margin: auto;
 }
 
-
-/* Tags on Posts.js */
-
-label {
-  border: none;
-  background-color: #ddd;
-  color: #555;
-  padding: 10px 20px;
-  margin: 5px;
-  border-radius: 5px;
-  outline: none;
-  cursor: pointer;
-}
-
-input[type="radio"][name="buttonGroup"] {
-  display: none;
-}
-
-label.selected {
-  background-color: #0077ff;
-  color: #fff;
-}
