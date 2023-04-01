@@ -5,6 +5,8 @@ const auth = require('../../middleware/auth');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const { check, validationResult } = require('express-validator');
+const emailSend = require('../../middleware/emailValidate/emailSender');
+const codeValidating = require('../../middleware/emailValidate/codeValidating');
 
 const User = require('../../models/User');
 
@@ -21,6 +23,42 @@ router.get('/', auth, async (req, res) => {
   }
 });
 
+// @route   POST api/auth/validate-email
+// @desc    validate email
+// @access  Public
+router.post('/validate-email', auth, async (req, res) => {
+  try {
+    const { name, email } = await User.findById(req.user.id).select(
+      '-password'
+    );
+
+    const { validationCode } = req.body;
+    if (!validationCode) {
+      emailSend(name, email);
+      return res.status(400).json({
+        errors: [
+          {
+            msg: 'A validation code has been sent to your email. Please check your mailbox!',
+          },
+        ],
+      });
+    }
+
+    var passValidate = await codeValidating(name, email, validationCode);
+
+    if (!passValidate) {
+      return res
+        .status(400)
+        .json({ errors: [{ msg: 'ValidationCode not match' }] });
+    }
+
+    res.json({ msg: 'ValidationCode match' });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});
+
 // @route   POST api/auth
 // @desc    Authenticate user & get token
 // @access  Public
@@ -28,10 +66,7 @@ router.post(
   '/',
   [
     check('email', 'Please include a valid email').isEmail(),
-    check(
-      'password',
-      'password is required'
-    ).exists()
+    check('password', 'password is required').exists(),
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -52,8 +87,8 @@ router.post(
       }
 
       // compare the user input password with the encrypted password in db
-      const isMatch = await bcrypt.compare(password,user.password);
-      if(!isMatch){
+      const isMatch = await bcrypt.compare(password, user.password);
+      if (!isMatch) {
         return res
           .status(400)
           .json({ errors: [{ msg: 'Invalid credentials' }] });

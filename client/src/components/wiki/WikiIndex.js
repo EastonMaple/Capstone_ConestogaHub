@@ -35,6 +35,7 @@ const WikiIndex = () => {
                   <ImageGrid />
                 </div>
                 <div className='inline-block'>
+                  <WikiPageDBList />
                   <Link to={wikiPagesDict['part time jobs']}>
                     <li>How to find part-time jobs</li>
                   </Link>
@@ -55,7 +56,6 @@ const WikiIndex = () => {
                   <li>Familiarize new students with banking services</li>
                   <li>Local and regional transportation</li>
                   <li>Familiarize new students with mobile services</li>
-                  <WikiPageDBList />
                 </div>
               </div>
             </div>

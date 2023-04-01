@@ -5,8 +5,6 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const { check, validationResult } = require('express-validator');
-const emailSend = require('../../middleware/emailValidate/emailSender');
- const codeValidating= require('../../middleware/emailValidate/codeValidating');
 
 const User = require('../../models/User');
 
@@ -29,7 +27,8 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { name, email, password, validationCode} = req.body;
+    // const { name, email, password, validationCode } = req.body;
+    const { name, email, password } = req.body;
 
     try {
       // see if user exists
@@ -40,22 +39,7 @@ router.post(
           .status(400)
           .json({ errors: [{ msg: 'User already exists' }] });
       }
-     if(!validationCode)
-         {
-          emailSend(name,email);
-          return res
-          .status(400)
-          .json({ errors: [{ msg: 'Validation code has sent,Please check your mailBox!' }] });
-         }
-     
-      var passValidate =await codeValidating(name,email,validationCode);
       
-      if (!passValidate) {
-        return res
-          .status(400)
-          .json({ errors: [{ msg: 'ValidationCode not match' }] });
-      }
-
       // get users gravatar
       const avatar = gravatar.url(email, {
         s: '200',
@@ -66,6 +50,7 @@ router.post(
       // create a new user document
       user = new User({
         name,
+        type: 'user',
         email,
         avatar,
         password,
