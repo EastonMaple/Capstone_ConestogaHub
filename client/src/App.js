@@ -62,9 +62,15 @@ const App = () => {
           <Route path='wikipage' element={<WikiPage />} />
           <Route path='wikipage2' element={<WikiPage2 />} />
           <Route path='wikipage3' element={<WikiPage3 />} />
-          <Route path='wiki' element={<WikiIndex />} />
-          <Route path='wiki/:id' element={<WikiPageDBSingle />} />
-          <Route path='create-wiki' element={<CreateWiki />} />
+          <Route path='wiki' element={<PrivateRoute component={WikiIndex} />} />
+          <Route
+            path='wiki/:id'
+            element={<PrivateRoute component={WikiPageDBSingle} />}
+          />
+          <Route
+            path='create-wiki'
+            element={<PrivateRoute component={CreateWiki} />}
+          />
           <Route path='profiles' element={<Profiles />} />
           <Route path='profile/:id' element={<Profile />} />
           <Route
