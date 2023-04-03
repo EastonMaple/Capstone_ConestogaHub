@@ -617,6 +617,7 @@ label {
   border-radius: 5px;
   outline: none;
   cursor: pointer;
+  user-select: none;
 }
 
 input[type="radio"][name="buttonGroup"] {

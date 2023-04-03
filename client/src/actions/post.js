@@ -19,24 +19,40 @@ import {
 */
 
 // Get posts (Exporting allows it to be called from other scripts)
-export const getPosts = (tag) => async (dispatch) => {
-  try {
-    var currentPosts;
-    if(tag == null) tag = '';
-    const res = await api.get('/posts');
-    //Ensure we have a post.tag (if we don't include && we will get undefined problems)
-    const filteredPosts = res.data.filter(post => post.tag && post.tag.includes(tag));
+// export const getPosts = (tag) => async (dispatch) => {
+//   try {
+//     var currentPosts;
+//     if(tag == null) tag = '';
+//     const res = await api.get('/posts');
+//     //Ensure we have a post.tag (if we don't include && we will get undefined problems)
+//     const filteredPosts = res.data.filter(post => post.tag && post.tag.includes(tag));
 
-    //No tag given
-    if(tag == ''){
-      currentPosts = res.data;
-    }else{
-      currentPosts = filteredPosts;
-    }
+//     //No tag given
+//     if(tag == ''){
+//       currentPosts = res.data;
+//     }else{
+//       currentPosts = filteredPosts;
+//     }
     
+//     dispatch({
+//       type: GET_POSTS,
+//       payload: currentPosts
+//     });
+//   } catch (err) {
+//     dispatch({
+//       type: POST_ERROR,
+//       payload: { msg: err.response.statusText, status: err.response.status }
+//     });
+//   }
+// };
+
+export const getPosts = () => async (dispatch) => {
+  try {
+    const res = await api.get('/posts');
+
     dispatch({
       type: GET_POSTS,
-      payload: currentPosts
+      payload: res.data
     });
   } catch (err) {
     dispatch({
