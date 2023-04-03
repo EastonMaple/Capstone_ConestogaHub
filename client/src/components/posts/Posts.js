@@ -7,7 +7,7 @@ import { getPosts, getPostWithTag } from '../../actions/post';
 
 const Posts = ({ getPosts, post: { posts } }) => {
   const [allPosts, setAllPosts] = useState([]);
-  const [selectedButton, setSelectedButton] = useState("button1");
+  const [selectedButton, setSelectedButton] = useState("");
   //For filtered posts
   const [filteredPosts, setFilteredPosts] = useState([]);
 
@@ -16,12 +16,15 @@ const Posts = ({ getPosts, post: { posts } }) => {
   }, []);
 
   const toggleButton = async (event) => {
-    setSelectedButton(event.target.value);
+    if(event.target.value == selectedButton){
+      setSelectedButton("");
+    }else{
+      setSelectedButton(event.target.value);
+    }
     //getPostWithTag(selectedButton);
-    const temp = await getPosts(selectedButton)
-    setFilteredPosts(temp);
+    //const temp = await getPosts(selectedButton)
+    //setFilteredPosts(temp);
   };
-  //const postsToRender = filteredPosts.length > 0 ? filteredPosts : posts;
 
   return (
     <section className="container">
@@ -75,9 +78,10 @@ const Posts = ({ getPosts, post: { posts } }) => {
         />
         Other Help
       </label>
-      <div className="posts">
-        {
-        posts.map((post) => (
+      <div className="posts" style={{marginTop:"10px"}}>
+        { 
+        //I did post.tag because we had some posts with no tags prior to implementing tags
+        posts.filter((post)=> selectedButton ? (post.tag && post.tag.includes(selectedButton)):true).map((post) => (
           <PostItem key={post._id} post={post} />
         ))}
       </div>
