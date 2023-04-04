@@ -1,43 +1,44 @@
 import React, { useState, useEffect } from 'react';
-import { Navigate } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import api from '../../utils/api';
 import { setAlert } from '../../actions/alert';
+import PropTypes from 'prop-types';
 
-// load user
-const loadUser = async () => {
-  try {
-    const res = await api.get('/auth');
-    return res.data;
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-const VerifyEmail = () => {
+const VerifyEmail = ({ setAlert, auth }) => {
   const [formData, setFormData] = useState({
     validationCode: '',
   });
-  const [user, setUser] = useState();
+  const navigate = useNavigate();
 
   const validateEmail = async () => {
     await api.post('/auth/validate-email');
   };
 
+  const fetchData = async () => {
+    try {
+      const { user } = auth;
+      // check if the email is already verified, if so set an alert
+      // setAlert('Email already verified', 'success');
+      if (user && user.emailVerified) {
+        setAlert('Email already verified', 'success');
+        navigate('/dashboard');
+      }
+      // else send the email verification code
+      else {
+        console.log('sending email');
+        console.log(user);
+        validateEmail();
+        setAlert('Please Check your mailbox for the code.', 'success');
+      }
+    } catch (error) {
+      console.error(error);
+      setAlert('Failed to load user data', 'error');
+    }
+  };
+
   useEffect(() => {
-    // check if the email is already verified, if so set an alert
-    // setAlert('Email already verified', 'success');
-    loadUser().then((data) => {
-      setUser(data);
-    });
-    if (user && user.emailVerified) {
-      setAlert('Email already verified', 'success');
-      return <Navigate to='/dashboard' />;
-    }
-    // else send the email verification code
-    else {
-      validateEmail();
-      setAlert('Please Check your mailbox for the code.', 'success');
-    }
+    fetchData();
   }, []);
 
   const onChange = (e) =>
@@ -45,10 +46,17 @@ const VerifyEmail = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const res = await api.post('/auth/validate-email', formData);
-    if (!res.data.errors) {
-      setAlert('Email verified!', 'success');
-      return <Navigate to='/dashboard' />;
+    try {
+      console.log(formData);
+      const res = await api.post('/auth/validate-email', formData);
+      if (!res.data.errors) {
+        setAlert('Email verified!', 'success');
+        const update = await api.put('/auth/update');
+        navigate('/dashboard');
+      }
+    } catch (err) {
+      console.error(err);
+      setAlert('Failed to verify email', 'error');
     }
   };
 
@@ -65,7 +73,7 @@ const VerifyEmail = () => {
               mailbox for the code.
             </p>
           </div>
-          <form className='mt-5 sm:flex sm:items-center'>
+          <form className='mt-5 sm:flex sm:items-center' onSubmit={onSubmit}>
             <div className='w-full sm:max-w-xs'>
               <label htmlFor='validationCode' className='sr-only'>
                 Verification Code
@@ -80,9 +88,7 @@ const VerifyEmail = () => {
               />
             </div>
             <br />
-            <button type='submit' className='btn' onSubmit={onSubmit}>
-              Submit
-            </button>
+            <input type='submit' className='btn btn-primary my-1' />
           </form>
         </div>
         <div className='p-1 text-right sm:px-6'>
@@ -98,4 +104,13 @@ const VerifyEmail = () => {
   );
 };
 
-export default VerifyEmail;
+VerifyEmail.propTypes = {
+  setAlert: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, { setAlert })(VerifyEmail);
