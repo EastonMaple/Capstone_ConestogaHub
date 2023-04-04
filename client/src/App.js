@@ -1,16 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import {Helmet} from 'react-helmet';
 import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import SchoolLink from './components/school-link/SchoolLink';
-import WikiPage from './components/wiki/WikiPage';
-import WikiPage2 from './components/wiki/WikiPage2';
-import WikiPage3 from './components/wiki/WikiPage3';
 import WikiIndex from './components/wiki/WikiIndex';
 import WikiPageDBSingle from './components/wiki/WikiPageDBSingle';
-import CreateWiki from './components/wiki/CreateWiki';
 import Alert from './components/layout/Alert';
 import Dashboard from './components/dashboard/Dashboard';
 import ProfileForm from './components/profile-forms/ProfileForm';
@@ -33,6 +30,7 @@ import setAuthToken from './utils/setAuthToken';
 import './App.css';
 
 const App = () => {
+  const [title, setTitle] = useState('Welcome to Conestoga Hub'); // site title
   useEffect(() => {
     // check for token in LS when app first runs
     if (localStorage.token) {
@@ -52,24 +50,20 @@ const App = () => {
   return (
     <Provider store={store}>
       <Router>
+        <Helmet>
+          <title>{title}</title>
+        </Helmet>
         <Navbar />
         <Alert />
         <Routes>
           <Route path='/' element={<Landing />} />
-          <Route path='register' element={<Register />} />
-          <Route path='login' element={<Login />} />
+          <Route path='register' element={<Register setTitle={setTitle}/>} />
+          <Route path='login' element={<Login setTitle={setTitle}/>} />
           <Route path='school-link' element={<SchoolLink />} />
-          <Route path='wikipage' element={<WikiPage />} />
-          <Route path='wikipage2' element={<WikiPage2 />} />
-          <Route path='wikipage3' element={<WikiPage3 />} />
           <Route path='wiki' element={<PrivateRoute component={WikiIndex} />} />
           <Route
             path='wiki/:id'
             element={<PrivateRoute component={WikiPageDBSingle} />}
-          />
-          <Route
-            path='create-wiki'
-            element={<PrivateRoute component={CreateWiki} />}
           />
           <Route path='profiles' element={<Profiles />} />
           <Route path='profile/:id' element={<Profile />} />

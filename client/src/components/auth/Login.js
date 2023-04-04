@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../actions/auth';
 
-const Login = ({ login, isAuthenticated }) => {
+const Login = ({ login, isAuthenticated, setTitle }) => {
+  useEffect(() => {
+    setTitle('Login'); // update the title when the component is mounted
+  }, []);
+
   const [formData, setFormData] = useState({
     email: '',
     password: ''

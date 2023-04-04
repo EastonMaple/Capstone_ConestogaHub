@@ -3,13 +3,6 @@ import { Link } from 'react-router-dom';
 import ImageGrid from '../decorative/ImageGrid';
 import WikiPageDBList from './WikiPageDBList';
 
-export const wikiPagesDict = {
-  'part time jobs': '/WikiPage',
-  'health insurance': '/WikiPage2',
-  'work permit': '/WikiPage3',
-  'study permit': '/WikiPage4',
-};
-
 const WikiIndex = () => {
   return (
     <>
@@ -36,16 +29,6 @@ const WikiIndex = () => {
                 </div>
                 <div className='inline-block'>
                   <WikiPageDBList />
-                  <Link to={wikiPagesDict['part time jobs']}>
-                    <li>How to find part-time jobs</li>
-                  </Link>
-                  <li>How to apply for study permit (and extension)</li>
-                  <Link to={wikiPagesDict['work permit']}>
-                    <li>How to apply for work permit</li>
-                  </Link>
-                  <Link to={wikiPagesDict['health insurance']}>
-                    <li>Health Insurance</li>
-                  </Link>
                   <li>How to find your timetable</li>
                   <li>How to find room for rent</li>
                   <li>How to apply for G1 license</li>
