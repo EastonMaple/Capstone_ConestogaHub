@@ -1,4 +1,4 @@
-
+import React, { useEffect } from 'react';
 const posts = [
   {
     id: 1,
@@ -82,7 +82,11 @@ const posts = [
   },
 ]
 
-const SchoolLink = () => {
+const SchoolLink = ({setTitle}) => {
+  useEffect(() => {
+    setTitle('Useful Links'); // update the title when the component is mounted
+  }, []);
+
   return (
     <div className="bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">

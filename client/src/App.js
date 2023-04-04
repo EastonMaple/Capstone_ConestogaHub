@@ -60,17 +60,17 @@ const App = () => {
           <Route path='/' element={<Landing />} />
           <Route path='register' element={<Register setTitle={setTitle}/>} />
           <Route path='login' element={<Login setTitle={setTitle}/>} />
-          <Route path='school-link' element={<SchoolLink />} />
-          <Route path='wiki' element={<PrivateRoute component={WikiIndex} />} />
+          <Route path='school-link' element={<SchoolLink setTitle={setTitle}/>} />
+          <Route path='wiki' element={<PrivateRoute setTitle={setTitle} component={WikiIndex} />} />
           <Route
             path='wiki/:id'
             element={<PrivateRoute component={WikiPageDBSingle} />}
           />
-          <Route path='profiles' element={<Profiles />} />
-          <Route path='profile/:id' element={<Profile />} />
+          <Route path='profiles' element={<Profiles setTitle={setTitle} />} />
+          <Route path='profile/:id' element={<Profile setTitle={setTitle} />} />
           <Route
             path='dashboard'
-            element={<PrivateRoute component={Dashboard} />}
+            element={<PrivateRoute setTitle={setTitle} component={Dashboard} />}
           />
           <Route
             path='create-profile'
@@ -92,9 +92,9 @@ const App = () => {
             path='verify-email'
             element={<PrivateRoute component={VerifyEmail} />}
           />
-          <Route path='posts' element={<PrivateRoute component={Posts} />} />
-          <Route path='posts/:id' element={<PrivateRoute component={Post} />} />
-          <Route path='/*' element={<NotFound />} />
+          <Route path='posts' element={<PrivateRoute setTitle={setTitle} component={Posts} />} />
+          <Route path='posts/:id' element={<PrivateRoute setTitle={setTitle} component={Post} />} />
+          <Route path='/*' element={<NotFound  setTitle={setTitle}/>} />
         </Routes>
       </Router>
     </Provider>

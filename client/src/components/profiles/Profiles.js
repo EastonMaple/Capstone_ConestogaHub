@@ -5,9 +5,10 @@ import Spinner from '../layout/Spinner';
 import ProfileItem from './ProfileItem';
 import { getProfiles } from '../../actions/profile';
 
-const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
+const Profiles = ({ getProfiles,setTitle, profile: { profiles, loading } }) => {
   useEffect(() => {
     getProfiles();
+    setTitle('Student Profiles'); // update the title when the component is mounted
   }, [getProfiles]);
 
   return (

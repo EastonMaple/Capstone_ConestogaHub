@@ -9,11 +9,13 @@ import { getCurrentProfile, deleteAccount } from '../../actions/profile';
 
 const Dashboard = ({
   getCurrentProfile,
+  setTitle,
   deleteAccount,
   auth: { user },
   profile: { profile }
 }) => {
   useEffect(() => {
+    setTitle('Dashboard'); // update the title when the component is mounted
     getCurrentProfile();
   }, [getCurrentProfile]);
 

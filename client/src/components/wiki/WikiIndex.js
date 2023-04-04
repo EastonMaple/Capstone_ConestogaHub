@@ -1,9 +1,12 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
 import ImageGrid from '../decorative/ImageGrid';
 import WikiPageDBList from './WikiPageDBList';
 
-const WikiIndex = () => {
+const WikiIndex = ({setTitle}) => {
+  useEffect(() => {
+    setTitle('Wiki'); // update the title when the component is mounted
+  }, []);
+
   return (
     <>
       <div className='relative overflow-hidden bg-white'>
@@ -29,15 +32,6 @@ const WikiIndex = () => {
                 </div>
                 <div className='inline-block'>
                   <WikiPageDBList />
-                  <Link to={wikiPagesDict['part time jobs']}>
-                    <li>How to find part-time jobs</li>
-                  </Link>
-                  <Link to={wikiPagesDict['work permit']}>
-                    <li>How to apply for work permit</li>
-                  </Link>
-                  <Link to={wikiPagesDict['health insurance']}>
-                    <li>Health Insurance</li>
-                  </Link>
                 </div>
               </div>
             </div>

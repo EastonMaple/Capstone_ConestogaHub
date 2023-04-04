@@ -10,9 +10,10 @@ import ProfileEducation from './ProfileEducation';
 import ProfileGithub from './ProfileGithub';
 import { getProfileById } from '../../actions/profile';
 
-const Profile = ({ getProfileById, profile: { profile }, auth }) => {
+const Profile = ({ getProfileById,setTitle, profile: { profile }, auth }) => {
   const { id } = useParams();
   useEffect(() => {
+    setTitle('Student Profile'); // update the title when the component is mounted
     getProfileById(id);
   }, [getProfileById, id]);
 

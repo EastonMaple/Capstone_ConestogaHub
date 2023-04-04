@@ -5,17 +5,16 @@ import PostItem from './PostItem';
 import PostForm from './PostForm';
 import { getPosts, getPostWithTag } from '../../actions/post';
 
-const Posts = ({ getPosts, post: { posts } }) => {
-  const [allPosts, setAllPosts] = useState([]);
+const Posts = ({ getPosts, setTitle, post: { posts } }) => {
   const [selectedButton, setSelectedButton] = useState("");
-  //For filtered posts
-  const [filteredPosts, setFilteredPosts] = useState([]);
 
   useEffect(() => {
-    getPosts().then((data) => setAllPosts(data));
-  }, []);
+    getPosts();
+    setTitle('Posts'); // update the title when the component is mounted
+  }, [getPosts]);
 
   const toggleButton = async (event) => {
+    //Basically here we reset it if pressed twice in a row or set it to what it is supposed to be 
     if(event.target.value == selectedButton){
       setSelectedButton("");
     }else{

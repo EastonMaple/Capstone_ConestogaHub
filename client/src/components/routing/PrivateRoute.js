@@ -6,10 +6,11 @@ import Spinner from '../layout/Spinner';
 
 const PrivateRoute = ({
   component: AuthenicatedPage,
+  setTitle,
   auth: { isAuthenticated, loading }
 }) => {
   if (loading) return <Spinner />;
-  if (isAuthenticated) return <AuthenicatedPage />;
+  if (isAuthenticated) return <AuthenicatedPage setTitle={setTitle} />;
 
   return <Navigate to="/login" />;
 };

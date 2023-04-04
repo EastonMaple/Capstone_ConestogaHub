@@ -9,10 +9,11 @@ import CommentItem from '../post/CommentItem';
 import { getPost } from '../../actions/post';
 
 
-const Post = ({ getPost, post: { post, loading } }) => {
+const Post = ({ getPost, setTitle, post: { post, loading } }) => {
   const { id } = useParams();
   useEffect(() => {
     getPost(id);
+    setTitle('Post'); // update the title when the component is mounted
   }, [getPost, id]);
 
   return loading || post === null ? (
