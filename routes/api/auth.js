@@ -23,6 +23,23 @@ router.get('/', auth, async (req, res) => {
   }
 });
 
+
+// @route PUT api/auth/update
+// update user
+router.put(
+  '/update',
+    auth,
+  async (req, res) => {
+    try {
+      const user = await User.updateOne({ _id: req.user.id }, { $set: { emailVerified: true } });
+      res.json({ msg: 'updated' });
+    }catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server error');
+    }
+  }
+);
+
 // @route   POST api/auth/validate-email
 // @desc    validate email
 // @access  Public

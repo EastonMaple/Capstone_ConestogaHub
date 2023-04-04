@@ -41,7 +41,7 @@ const WikiPageDBList = () => {
   const hasWikis = wikis.length !== 0;
   if (hasWikis) {
     wikisList = wikis.map((wikiObj) => (
-      <div>
+      <div className='sm:max-w-lg'>
         <li>
           <Link to={`/wiki/${wikiObj._id}`}>{wikiObj.title}</Link>
         </li>
