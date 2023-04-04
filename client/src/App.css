@@ -628,3 +628,8 @@ label.selected {
   background-color: #0077ff;
   color: #fff;
 }
+
+/*Search bar for profiles*/
+.search-container input{
+  width: 95%;
+}

@@ -1,5 +1,5 @@
 {
-  "mongoURI": "mongodb+srv://lyxillusio:gkNI6GAdC8INg8uR@conestogahub.wixjyas.mongodb.net/?retryWrites=true&w=majority",
+  "mongoURI": "",
   "jwtSecret": "secretkey",
   "githubToken":"",
   "emailSenderAddress":"",
