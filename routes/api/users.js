@@ -54,7 +54,7 @@ router.post(
         email,
         avatar,
         password,
-        emailVerified
+        emailVerified: false,
       });
 
       // encrypt password
