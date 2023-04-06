@@ -8,6 +8,7 @@ import Login from './components/auth/Login';
 import SchoolLink from './components/school-link/SchoolLink';
 import WikiIndex from './components/wiki/WikiIndex';
 import WikiPageDBSingle from './components/wiki/WikiPageDBSingle';
+import CreateWiki from './components/wiki/CreateWiki';
 import Alert from './components/layout/Alert';
 import Dashboard from './components/dashboard/Dashboard';
 import ProfileForm from './components/profile-forms/ProfileForm';
@@ -65,6 +66,10 @@ const App = () => {
           <Route
             path='wiki/:id'
             element={<PrivateRoute component={WikiPageDBSingle} />}
+          />
+          <Route
+            path='create-wiki'
+            element={<PrivateRoute component={CreateWiki} />}
           />
           <Route path='profiles' element={<Profiles setTitle={setTitle} />} />
           <Route path='profile/:id' element={<Profile setTitle={setTitle} />} />
