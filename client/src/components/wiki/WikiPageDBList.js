@@ -1,47 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import api from '../../utils/api';
-
-// get all wikis
-const getWikis = async () => {
-  try {
-    const res = await api.get('/wiki');
-    console.log(res.data);
-    return res.data;
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-// load user
-const loadUser = async () => {
-  try {
-    const res = await api.get('/auth');
-    return res.data;
-  } catch (err) {
-    console.log(err);
-  }
-};
+import { connect } from 'react-redux';
+import propTypes from 'prop-types';
+import { getWikis } from '../../actions/wiki';
 
 // this component is used to display all wikis in the database
-const WikiPageDBList = () => {
-  const [wikis, setWikis] = useState([]);
-  const [user, setUser] = useState({});
-
+const WikiPageDBList = ({user, getWikis, wikis}) => {
   useEffect(() => {
-    getWikis().then((data) => {
-      setWikis(data);
-    });
-    loadUser().then((data) => {
-      setUser(data);
-    });
-  }, []);
+    getWikis();
+  }, [getWikis]);
 
   let wikisList = null;
   const hasWikis = wikis.length !== 0;
   if (hasWikis) {
-    wikisList = wikis.map((wikiObj) => (
-      <div className='sm:max-w-lg'>
+    wikisList = wikis.map((wikiObj, index) => (
+      <div className='sm:max-w-lg' key={index}>
         <li>
           <Link to={`/wiki/${wikiObj._id}`}>{wikiObj.title}</Link>
         </li>
@@ -52,7 +25,7 @@ const WikiPageDBList = () => {
   }
 
   // get the user type
-  console.log(user.type);
+  // console.log('user type is: ' + user.type);
 
   // if the user type is admin, show the create wiki link
   return (
@@ -65,4 +38,15 @@ const WikiPageDBList = () => {
   );
 };
 
-export default WikiPageDBList;
+WikiPageDBList.propTypes = {
+  user: propTypes.object.isRequired,
+  wikis: propTypes.array.isRequired,
+  getWikis: propTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  user: state.auth.user,
+  wikis: state.wiki.wikis,
+});
+
+export default connect(mapStateToProps,{getWikis})(WikiPageDBList) ;

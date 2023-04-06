@@ -5,7 +5,7 @@ import api from '../../utils/api';
 import { setAlert } from '../../actions/alert';
 import PropTypes from 'prop-types';
 
-const VerifyEmail = ({ setAlert, auth }) => {
+const VerifyEmail = ({ setAlert, user }) => {
   const [formData, setFormData] = useState({
     validationCode: '',
   });
@@ -15,19 +15,18 @@ const VerifyEmail = ({ setAlert, auth }) => {
     await api.post('/auth/validate-email');
   };
 
-  const fetchData = async () => {
+  const fetchData = () => {
     try {
-      const { user } = auth;
-      // check if the email is already verified, if so set an alert
-      // setAlert('Email already verified', 'success');
+      while (!user) {
+        // wait for user to load
+      }
+      // console.log(user);
+      // check if the email is already verified, if so return to dashboard
       if (user && user.emailVerified) {
         setAlert('Email already verified', 'success');
         navigate('/dashboard');
-      }
-      // else send the email verification code
-      else {
-        console.log('sending email');
-        console.log(user);
+      } else {
+        // send a new code
         validateEmail();
         setAlert('Please Check your mailbox for the code.', 'success');
       }
@@ -46,17 +45,25 @@ const VerifyEmail = ({ setAlert, auth }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    try {
-      console.log(formData);
-      const res = await api.post('/auth/validate-email', formData);
-      if (!res.data.errors) {
-        setAlert('Email verified!', 'success');
-        const update = await api.put('/auth/update');
-        navigate('/dashboard');
+    // validation for input
+    if (
+      formData.validationCode.length !== 6 ||
+      isNaN(parseInt(formData.validationCode))
+    ) {
+      setAlert('Please enter a valid code', 'error');
+      return false;
+    } else {
+      try {
+        const res = await api.post('/auth/validate-email', formData);
+        if (!res.data.errors) {
+          setAlert('Email verified!', 'success');
+          await api.put('/auth/update');
+          navigate('/dashboard');
+        }
+      } catch (err) {
+        console.error(err);
+        setAlert('Failed to verify email', 'error');
       }
-    } catch (err) {
-      console.error(err);
-      setAlert('Failed to verify email', 'error');
     }
   };
 
@@ -106,11 +113,11 @@ const VerifyEmail = ({ setAlert, auth }) => {
 
 VerifyEmail.propTypes = {
   setAlert: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  auth: state.auth,
+  user: state.auth.user,
 });
 
 export default connect(mapStateToProps, { setAlert })(VerifyEmail);

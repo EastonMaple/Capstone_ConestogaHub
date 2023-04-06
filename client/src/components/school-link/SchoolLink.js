@@ -61,7 +61,7 @@ const posts = [
     category: { title: 'Learn', href: '#' },
   },
   {
-    id: 6,
+    id: 7,
     title: 'ONE Card',
     href: 'https://www.conestogac.on.ca/onecard/get-your-card',
     description:
@@ -71,7 +71,7 @@ const posts = [
     category: { title: 'Account', href: '#' },
   },
   {
-    id: 7,
+    id: 8,
     title: 'CSI',
     href: 'https://conestogastudents.com/',
     description:
@@ -85,7 +85,7 @@ const posts = [
 const SchoolLink = ({setTitle}) => {
   useEffect(() => {
     setTitle('Useful Links'); // update the title when the component is mounted
-  }, []);
+  }, [setTitle]);
 
   return (
     <div className="bg-white py-24 sm:py-32">

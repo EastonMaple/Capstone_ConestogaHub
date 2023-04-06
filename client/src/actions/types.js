@@ -23,3 +23,5 @@ export const DELETE_POST = 'DELETE_POST';
 export const ADD_POST = 'ADD_POST';
 export const ADD_COMMENT = 'ADD_COMMENT';
 export const REMOVE_COMMENT = 'REMOVE_COMMENT';
+export const GET_WIKIS = 'GET_WIKIS';
+export const WIKI_ERROR = 'WIKI_ERROR';

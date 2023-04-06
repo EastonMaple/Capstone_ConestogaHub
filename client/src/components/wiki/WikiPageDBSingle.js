@@ -8,7 +8,7 @@ import './WikiPageDBSingle.css';
 const getSingleWiki = async (id) => {
   try {
     const res = await api.get(`/wiki/${id}`);
-    console.log(res.data);
+    // console.log(res.data);
     return res.data;
   } catch (err) {
     console.log(err);

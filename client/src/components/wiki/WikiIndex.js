@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import ImageGrid from '../decorative/ImageGrid';
 import WikiPageDBList from './WikiPageDBList';
 
-const WikiIndex = ({setTitle}) => {
+const WikiIndex = ({ setTitle }) => {
   useEffect(() => {
-    setTitle('Wiki'); // update the title when the component is mounted
-  }, []);
+    setTitle('Wiki');
+  }, [setTitle]);
 
   return (
     <>
