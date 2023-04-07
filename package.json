@@ -9,7 +9,8 @@
     "server": "nodemon index",
     "client": "npm start --prefix client",
     "dev": "nodemon index",
-    "devs": "concurrently \"npm run server\" \"npm run client\""
+    "devs": "concurrently \"npm run server\" \"npm run client\"",
+    "postbuild": "NPM_CONFIG_PRODUCTION=false npm run build --prefix client"
   },
   "author": "SKHY",
   "license": "MIT",
